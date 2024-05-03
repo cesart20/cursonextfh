@@ -1,5 +1,4 @@
-import { PokemonGrid, PokemonsReponse, SimplePokemon } from "@/pokemons";
-import { useAppSelector } from "@/store";
+import { FavoritePokemons } from "@/pokemons";
 
 
 export const metadata = {
@@ -12,19 +11,15 @@ export const metadata = {
 
 export default async function PokemonsPage() {
 
-  const pokemons = useAppSelector(state => state.pokemons)
-
-  console.log(pokemons);
-  
-
   
   return (
     <div className="flex flex-col">
 
       <span className="text-5xl my-2">Pokémons Favoritos <small className="text-blue-500">Global State</small></span>
       
-      <PokemonGrid pokemons={ [] } />
-
+      <FavoritePokemons />
     </div>
   );
 }
+
+

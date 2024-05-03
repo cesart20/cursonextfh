@@ -5,11 +5,17 @@ interface PokemonState {
     [key: string]: SimplePokemon,
 }
 
+// const getInitialState = () => {
+//   const favorites = JSON.parse(localStorage.getItem('favorites-pokemons') ?? '{}');
+//   return favorites;
+// }
+
 const initialState: PokemonState = {
-    '1': {id:'1', name: 'bulbasaur'},
-    '3': {id:'3', name: 'venusaur'},
-    '4': {id:'4', name: 'charmander'},
-    '5': {id:'5', name: 'Charmeleon'},
+  // ...getInitialState(),
+    // '1': {id:'1', name: 'bulbasaur'},
+    // '3': {id:'3', name: 'venusaur'},
+    // '4': {id:'4', name: 'charmander'},
+    // '5': {id:'5', name: 'Charmeleon'},
 
 }
 
@@ -22,11 +28,14 @@ const pokemonsSlice = createSlice({
         const { id } = pokemon;
 
         if (!!state[id]) {
-            delete state[id];
-            return;
+          delete state[id];
+          // return;
+        } else {
+          state[id] = pokemon;
         }
 
-        state[id] = pokemon;
+        //TODO: No se debe hacer en redux
+        localStorage.setItem('favorites-pokemons', JSON.stringify(state));
     }
   }
 });
