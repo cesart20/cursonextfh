@@ -7,7 +7,7 @@ interface CounterState {
 
 
 const initialState: CounterState = {
-  count: 5,
+  count: 100,
   isReady: false,
 }
 
